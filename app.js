@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const uri = "mongodb+srv://angDB:7b0oAwwnZAAr9d8l@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
+const uri = "mongodb+srv://angDB:${{secret.DB_PASS}}@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 

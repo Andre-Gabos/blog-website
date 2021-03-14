@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose")
 const ejs = require("ejs");
 const kebabCase = require('lodash.kebabcase');
+const keys = require("./key.js")
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const uri = "mongodb+srv://angDB:7b0oAwwnZAAr9d8l@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + keys.name + ":" + keys.pass + "@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 

@@ -1,15 +1,17 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose")
 const ejs = require("ejs");
-const kebabCase = require('lodash.kebabcase');
-const keys = require("./key.js")
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const uri = "mongodb+srv://" + keys.name + ":" + keys.pass + "@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
+const mongoID = process.env.MONGO_ID;
+const mongoPass = process.env.MONGO_PASS;
+
+const uri = "mongodb+srv://" + mongoID + ":" + mongoPass + "@cluster0.ppgqt.mongodb.net/blogDB?retryWrites=true&w=majority"
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
